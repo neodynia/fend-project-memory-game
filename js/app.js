@@ -75,6 +75,7 @@ function playerRating(moves) {
 
 //End of game stats on modal
 function gameOver(moves,score) {
+    $('#winnerText').text(`Moves : ${moves} - Time: ${second}`);
     $("#myModal").modal();
 }
 
