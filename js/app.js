@@ -41,6 +41,7 @@ function startGame() {
     for (let i = 0; i < allCards.length; i++) {
        $('.deck').append("<li class=\"card\"><i class=\"fa fa-" + allCards[i] + "\"></i>");
     }
+    cardMatcher();
 
 
 //timer set to zero at game start
@@ -77,15 +78,15 @@ function gameEnd(moves,score) {
     });
 
 //match like cards and indicate matches and nonmatches
-function cardMatcher() {
+var cardMatcher = function() {
     //check card to see if flipped
     $('.card').on('click', function() {
         if ($(this).hasClass('show') || $(this).hasClass('match')) {
-            return true;
-        } else {
+            return true;}
+        let box = $(this).html();
         $(this).addClass('open show');
-        allOpenCards.push($(this));
-        }
+        allOpenCards.push(box);
+        
         //check for matches
         if (allOpenCards.length > 1) {
             if (this === allOpenCards[0]) {
@@ -104,7 +105,6 @@ function cardMatcher() {
             }
         }
     });
-}
+};
 
 startGame();
-cardMatcher();
