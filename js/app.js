@@ -44,7 +44,7 @@ function startGame() {
         $('li.card').html(iClass);
     }
 
-
+cardMatcher();
 //timer set to zero at game start
     resetTimer(nowTime);
     second = 0;
@@ -79,7 +79,7 @@ function gameEnd(moves,score) {
     });
 
 //match like cards and indicate matches and nonmatches
-function cardMatcher() {
+let cardMatcher() = function() {
     //check card to see if flipped
     $('.deck').find('.card').bind('click', function() {
         if ($(this).hasClass('show') || $(this).hasClass('match')) {
@@ -108,3 +108,5 @@ function cardMatcher() {
         }
     });
 }
+
+startGame();
