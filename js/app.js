@@ -2,10 +2,11 @@
 
 /*Variables*/
 let fullDeck = ["diamond", "bolt", "cube", "paper-plane-o", "anchor", "leaf", "bicycle", "bomb", "diamond", "bolt", "cube", "paper-plane-o", "anchor", "leaf", "bicycle", "bomb"];
-let nowTime;
 let allOpenCards = [];
 let match;
-let second;
+let min = 0;
+let second = 0;
+let zeroPlaceholder = 0;
 let moves;
 let star1 = 28;
 let stars2 = 19;
@@ -42,13 +43,23 @@ function startGame() {
        $('.deck').append("<li class=\"card\"><i class=\"fa fa-" + allCards[i] + "\"></i>");
     }
     cardMatcher();
+}
 
-
-//timer set to zero at game start
-    resetTimer(nowTime);
-    second = 0;
-    $('.timer').text(`${second}`);
-    initTime();
+function countTimer() {
+    setInterval(function() {
+        second++; 
+        if (second === 59) {
+          second = 0;
+          min++;
+        } 
+        if (second === 10) {
+            zeroPlaceholder = '';
+        }
+        if (second === 0) {
+            zeroPlaceholder = 0;
+        }
+        document.getElementById("timer").innerText = min+':'+zeroPlaceholder+second;
+    }, 2000);
 }
 
 function playerRating(moves) {
@@ -63,7 +74,7 @@ function playerRating(moves) {
 }
 
 //End of game stats on modal
-function gameEnd(moves,score) {
+function gameOver(moves,score) {
     $('#winnerText').text(`Moves: ${moves} - Time: ${seconds}`);
     $('#winnerModal').modal('toggle');
 }
@@ -80,6 +91,7 @@ function gameEnd(moves,score) {
 var cardMatcher = function() {
     //check card to see if flipped
     $('.card').on('click', function() {
+        countTimer();
         if ($(this).hasClass('show') || $(this).hasClass('match')) {
             return true;}
         //push HTML of each card into an array
