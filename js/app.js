@@ -66,6 +66,16 @@ function playerRating(moves) {
     return rating;
 }
 
-$(document).ready(function() {
-    startGame();
-});
+//End of game stats on modal
+function gameEnd(moves,score) {
+    $('#winnerText').text(`Moves: ${moves} - Time: ${seconds}`);
+    $('#winnerModal').modal('toggle');
+}
+
+//restart game
+    $('.restart').bind('click', function(confirmed) {
+        if (confirmed) {
+            $('.rating').removeClass('fa fa-star-o').addClass('fa fa-star');
+            startGame();
+        }
+    });
