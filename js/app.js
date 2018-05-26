@@ -83,27 +83,29 @@ var cardMatcher = function() {
     $('.card').on('click', function() {
         if ($(this).hasClass('show') || $(this).hasClass('match')) {
             return true;}
+        //push HTML of each card into an array
         let box = $(this).html();
-        $(this).addClass('open show');
+        $(this).addClass('open show').removeClass('animated shake bounce');
         allOpenCards.push(box);
 
         //turn off clicks when two cards are open 
        if (allOpenCards.length >= 2) {$('.card').off('click');} 
+       //match cards 
         if (allOpenCards.length > 1) {
-        //match cards
+        //match cards with animated bounce
             if (allOpenCards[1] === allOpenCards[0]) {
-                    $('.deck').find('.open').addClass('match animated bounce');
+                    $('.deck').find('.open').addClass('match animated bounce').removeClass('shake open');
                     allOpenCards.length = 0;
                     cardMatcher();
        
-
-        //Delay cards if not matched then cover up
+        //Delay cards if not matched then cover up with animated shake
             } else  {
+                $('.deck').find('.open').addClass('animated shake');
                 setTimeout(function() {
-                    $('.deck').find('.open').removeClass('open show'); 
+                    $('.deck li.card').removeClass('open show animated shake bounce')
                     allOpenCards.length = 0;
                     cardMatcher();
-                }, 2000);
+                }, 1200);
          
             }
         }
