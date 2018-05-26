@@ -29,7 +29,8 @@ function shuffle(array) {
 /*Function to Begin Game Play*/
 function startGame() {
     let allCards = shuffle(fullDeck);
-    $('.deck').empty(); 
+    $('.deck').empty();
+    
 
 // Game starts with no matching cards and zero moves
     match = 0;
@@ -38,8 +39,9 @@ function startGame() {
 
 //Loop to create and place the 16 cards
     for (let card of allCards) {
-        let iClass = `<i class="fa fa-${card}"></i>`;
-        $('ul.deck li.card').append(iClass);
+        let iClass = `<i class="fa fa-${card}">`;
+        $('ul.deck').append('<li class="card"></li>');
+        $('li.card').html(iClass);
     }
 
 //card listener 
@@ -64,3 +66,6 @@ function playerRating(moves) {
     return rating;
 }
 
+$(document).ready(function() {
+    startGame();
+});
