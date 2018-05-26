@@ -7,8 +7,6 @@ let allOpenCards = [];
 let match;
 let second;
 let moves;
-let wait;
-let totalCard = fullDeck.length / 2;
 let star1, star2, star3;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -89,12 +87,13 @@ var cardMatcher = function() {
         allOpenCards.push(box);
 
         //turn off clicks when two cards are open 
-       if (allOpenCards.length >= 2) {$('.card').off('click');} 
+    if (allOpenCards.length >= 2) {$('.card').off('click');} 
        //match cards 
         if (allOpenCards.length > 1) {
         //match cards with animated bounce
             if (allOpenCards[1] === allOpenCards[0]) {
                     $('.deck').find('.open').addClass('match animated bounce').removeClass('shake open');
+                    match++;
                     allOpenCards.length = 0;
                     cardMatcher();
        
@@ -108,6 +107,18 @@ var cardMatcher = function() {
                 }, 1200);
          
             }
+        
+        moves++;
+        rating(moves);
+        $('.moves').html(moves);
+        }
+
+        if (match === 8) {
+            rating(moves);
+            let score = rating(moves).score;
+            setTimeout(function() {
+                gameOver(moves,score);
+            }, 500);
         }
     });
 };
