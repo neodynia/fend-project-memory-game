@@ -52,10 +52,15 @@ function startGame() {
     initTime();
 }
 
-
-
-
-
-
-
+function playerRating(moves) {
+    let rating = 3; 
+    if (moves > stars3 && moves < stars2) {
+        $('.rating').eq(3).removeClass('fa fa-star').addClass('fa fa-star-o');
+    } else if (moves > stars2 && moves < star1) {
+        $('.rating').eq(2).removeClass('fa fa-star').addClass('fa fa-star-o');
+    } else if (moves > star1) {
+        $('.rating').eq(1).removeClass('fa fa-star').addClass('fa fa-star-o');
+    }
+    return rating;
 }
+
