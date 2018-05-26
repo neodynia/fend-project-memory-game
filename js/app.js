@@ -38,13 +38,11 @@ function startGame() {
     $('.moves').text('0');
 
 //Loop to create and place the 16 cards
-    for (let card of allCards) {
-        let iClass = `<i class="fa fa-${card}">`;
-        $('ul.deck').append('<li class="card"></li>');
-        $('li.card').html(iClass);
+    for (let i = 0; i < allCards.length; i++) {
+       $('.deck').append("<li class=\"card\"><i class=\"fa fa-" + allCards[i] + "\"></i>");
     }
 
-cardMatcher();
+
 //timer set to zero at game start
     resetTimer(nowTime);
     second = 0;
@@ -79,19 +77,18 @@ function gameEnd(moves,score) {
     });
 
 //match like cards and indicate matches and nonmatches
-let cardMatcher() = function() {
+function cardMatcher() {
     //check card to see if flipped
-    $('.deck').find('.card').bind('click', function() {
+    $('.card').on('click', function() {
         if ($(this).hasClass('show') || $(this).hasClass('match')) {
             return true;
-        }
-        let currentCard = $(this).context.innerHTML;
+        } else {
         $(this).addClass('open show');
-        allOpenCards.push(currentCard);
-
+        allOpenCards.push($(this));
+        }
         //check for matches
         if (allOpenCards.length > 1) {
-            if (currentCard === allOpenCards[0]) {
+            if (this === allOpenCards[0]) {
                 $('.deck').find('open').addClass('match');
                 setTimeout(function() {
                     $('.deck').find('open').removeClass('open show');
@@ -110,3 +107,4 @@ let cardMatcher() = function() {
 }
 
 startGame();
+cardMatcher();
