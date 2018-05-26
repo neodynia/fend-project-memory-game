@@ -7,7 +7,9 @@ let allOpenCards = [];
 let match;
 let second;
 let moves;
-let star1, star2, star3;
+let star1 = 28;
+let stars2 = 19;
+let stars3 = 9;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -50,15 +52,14 @@ function startGame() {
 }
 
 function playerRating(moves) {
-    let rating = 3; 
-    if (moves > stars3 && moves < stars2) {
-        $('.rating').eq(3).removeClass('fa fa-star').addClass('fa fa-star-o');
-    } else if (moves > stars2 && moves < star1) {
-        $('.rating').eq(2).removeClass('fa fa-star').addClass('fa fa-star-o');
-    } else if (moves > star1) {
-        $('.rating').eq(1).removeClass('fa fa-star').addClass('fa fa-star-o');
+    if (moves > 9 && moves < 19) {
+        $('#star-three').removeClass('fa fa-star');
+    } else if (moves > 19 && moves < 29) {
+        $('#star-two').removeClass('fa fa-star');
+    } else if (moves > 29) {
+        $('#star-one').removeClass('fa fa-star');
     }
-    return rating;
+    return moves;
 }
 
 //End of game stats on modal
@@ -70,7 +71,7 @@ function gameEnd(moves,score) {
 //restart game
     $('.restart').bind('click', function(confirmed) {
         if (confirmed) {
-            $('.rating').removeClass('fa fa-star-o').addClass('fa fa-star');
+            $('.stars').removeClass('fa fa-star-o').addClass('fa fa-star');
             startGame();
         }
     });
@@ -109,13 +110,13 @@ var cardMatcher = function() {
             }
         
         moves++;
-        rating(moves);
+        playerRating(moves);
         $('.moves').html(moves);
         }
 
         if (match === 8) {
-            rating(moves);
-            let score = rating(moves).score;
+            playerRating(moves);
+            let score = playerRating(moves).score;
             setTimeout(function() {
                 gameOver(moves,score);
             }, 500);
