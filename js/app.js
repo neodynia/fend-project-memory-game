@@ -91,16 +91,14 @@ var cardMatcher = function() {
        if (allOpenCards.length >= 2) {$('.card').off('click');} 
         if (allOpenCards.length > 1) {
         //match cards
-            if (this === allOpenCards[0]) {
-                setTimeout(function() {
-                    $('.deck').find('open').addClass('match');
+            if (allOpenCards[1] === allOpenCards[0]) {
+                    $('.deck').find('.open').addClass('match animated bounce');
                     allOpenCards.length = 0;
                     cardMatcher();
-                }, 5000); 
-                
+       
 
         //Delay cards if not matched then cover up
-            } else {
+            } else  {
                 setTimeout(function() {
                     $('.deck').find('.open').removeClass('open show'); 
                     allOpenCards.length = 0;
