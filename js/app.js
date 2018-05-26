@@ -37,7 +37,23 @@ function startGame() {
     $('.moves').text('0');
 
 //Loop to create and place the 16 cards
-    
+    for (let card of allCards) {
+        let iClass = `<i class="fa fa-${card}"></i>`;
+        $('ul.deck li.card').append(iClass);
+    }
+
+//card listener 
+    addCardListener();
+
+//timer set to zero at game start
+    resetTimer(nowTime);
+    second = 0;
+    $('.timer').text(`${second}`);
+    initTime();
+}
+
+
+
 
 
 
