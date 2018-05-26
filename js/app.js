@@ -1,14 +1,15 @@
-/*
- * Create a list that holds all of your cards
- */
+/*jshint esversion: 6 */
 
-
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+/*Variables*/
+let fullDeck = ["diamond", "bolt", "cube", "paper-plane-o", "anchor", "leaf", "bicycle", "bomb", "diamond", "bolt", "cube", "paper-plane-o", "anchor", "leaf", "bicycle", "bomb"];
+let nowTime;
+let allOpenCards = [];
+let match = 0;
+let second = 0;
+let moves = 0;
+let wait = 420;
+let totalCard = fullDeck.length / 2;
+let star1, star2, star3;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
