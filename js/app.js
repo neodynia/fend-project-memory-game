@@ -114,7 +114,7 @@ var cardMatcher = function() {
             } else  {
                 $('.deck').find('.open').addClass('animated shake');
                 setTimeout(function() {
-                    $('.deck li.card').removeClass('open show animated shake bounce')
+                    $('.deck li.card').removeClass('open show animated shake bounce');
                     allOpenCards.length = 0;
                     cardMatcher();
                 }, 1200);
