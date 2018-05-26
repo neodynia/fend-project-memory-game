@@ -88,5 +88,23 @@ function cardMatcher() {
         let currentCard = $(this).context.innerHTML;
         $(this).addClass('open show');
         allOpenCards.push(currentCard);
+
+        //check for matches
+        if (allOpenCards.length > 1) {
+            if (currentCard === allOpenCards[0]) {
+                $('.deck').find('open').addClass('match');
+                setTimeout(function() {
+                    $('.deck').find('open').removeClass('open show');
+                }, wait); 
+                match++;
+
+        //Delay cards if not matched then cover up
+            } else {
+                $('.deck').find('open').addClass('notmatch');
+                setTimeout(function() {
+                    $('.deck').find('open').removeClass('open show'); 
+                }, wait / 1.5);
+            }
+        }
     });
 }
