@@ -73,12 +73,11 @@ function startTimer() {
 /*Star to Moves Made Relationship*/
 function playerRating(moves) {
     // Establishes moves needed to earn stars and displays those results by removing star classes
-    if (moves > 9 && moves < 19) {
+    if (moves > 10 && moves <= 20) {
         $('#star-three').removeClass('fa fa-star');
-    } else if (moves > 19 && moves < 29) {
+    }
+    if (moves > 20) {
         $('#star-two').removeClass('fa fa-star');
-    } else if (moves > 29) {
-        $('#star-one').removeClass('fa fa-star');
     }
     return moves;
 }
@@ -88,11 +87,11 @@ function gameOver(moves) {
     // Displays game stats on end modal
     $('#winnerText').text(`Moves : ${moves} - Time: ${seconds}.${tens} seconds`);
     // Determines star stats on end modal
-    if (moves > 9 && moves < 19) {
+    if (moves <= 10) {
         $('span.starCount').text('THREE STARS!');
-    } else if (moves > 19 && moves < 29) {
+    } else if (moves <= 20) {
         $('span.starCount').text('TWO STARS!');
-    } else if (moves > 29) {
+    } else {
         $('span.starCount').text('ONE STAR!');
     }
     // Generates end modal upon game end
