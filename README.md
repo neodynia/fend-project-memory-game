@@ -13,9 +13,6 @@
 
 ## Instructions
 
-*[Rules for Game Play](##rulesforgameplay)
-*[Compiling](##compiling)
-
 You may check out the browser-based rendition of this project at [githubpage](https://neodynia.github.io/fend-project-memory-game)
 
 Greetings!
@@ -25,7 +22,7 @@ This project is a requirement for the Front End (web Development) Nanodegree off
 
 The game play is quite simple. Two cards are revealed at a time. If both cards contain the same symbol, a match has occured and the cards remain face up, showing their symbols. If the cards do not match, they are turned back to their original face down state. When all of the cards are matched, the game is deemed to have ended and the user has the ability to play again. The user is also presented with three game metrics as well. These metrics are the game time that has elapsed, the number of total moves made, and rating (based out of a three star maximum) that is related to the number of moves that have been made during the game.
 
-### Compling
+### Executing the Game && Compiling Considerations
 
 You are welcome to "fork" this repository and run the game on your own server or local environment. You also can play the game, already on the web, at [githubpage](https://neodynia.github.io/fend-project-memory-game)
 
