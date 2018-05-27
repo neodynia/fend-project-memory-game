@@ -112,3 +112,30 @@ h1 {
     visibility: hidden;
     
 }
+
+@media only screen and (max-width: 780px) {
+    .deck {
+      max-width: 300px;
+      min-height: auto;
+      padding-bottom: 17px;
+    }
+  
+    .deck .card {
+      height: 50px;
+      width: 50px;
+      margin-bottom: 17px;
+    }
+  
+    .score-panel {
+      max-width: 70%;
+      padding-bottom: 0;
+      display: block;
+      text-align: center;
+      line-height: 1.7em;
+    }
+  
+    h1 {
+      margin: 0;
+      padding: 10px 0;
+    }
+  }
