@@ -72,9 +72,9 @@ function startTimer () {
   
 
 function playerRating(moves) {
-    if (moves > 9 && moves < 19) {
+    if (moves > 9 && moves <= 19) {
         $('#star-three').removeClass('fa fa-star');
-    } else if (moves > 19 && moves < 29) {
+    } else if (moves > 19 && moves <= 29) {
         $('#star-two').removeClass('fa fa-star');
     } else if (moves > 29) {
         $('#star-one').removeClass('fa fa-star');
@@ -87,6 +87,14 @@ function playerRating(moves) {
 //End of game stats on modal
 function gameOver(moves,score) {
     $('#winnerText').text(`Moves : ${moves} - Time: ${seconds}.${tens} seconds`);
+    if (moves > 9 && moves < 19) {
+        $('.starCount').html('THREE STARS!');
+    } else if (moves > 19 && moves < 29) {
+        $('.starCount').html('TWO STARS!');
+    } else if (moves > 29) {
+        $('.starCount').html('ONE STAR!'); 
+    }
+
     $("#myModal").modal();
 }
 
