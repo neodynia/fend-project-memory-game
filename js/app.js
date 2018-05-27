@@ -4,13 +4,12 @@
 let fullDeck = ["diamond", "bolt", "cube", "paper-plane-o", "anchor", "leaf", "bicycle", "bomb", "diamond", "bolt", "cube", "paper-plane-o", "anchor", "leaf", "bicycle", "bomb"];
 let allOpenCards = [];
 let match;
-let min = 0;
-let second = 0;
-let zeroPlaceholder = 0;
 let moves;
-let star1 = 28;
-let stars2 = 19;
-let stars3 = 9;
+let seconds = 0; 
+let tens = 0; 
+let appendTens = document.getElementById("tens");
+let appendSeconds = document.getElementById("seconds");
+let Interval;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -41,26 +40,36 @@ function startGame() {
 //Loop to create and place the 16 cards
     for (let i = 0; i < allCards.length; i++) {
        $('.deck').append("<li class=\"card\"><i class=\"fa fa-" + allCards[i] + "\"></i>");
-    }
-    cardMatcher();
+          }
+       cardMatcher();
 }
 
-function countTimer() {
-    setInterval(function() {
-        second++; 
-        if (second === 59) {
-          second = 0;
-          min++;
-        } 
-        if (second === 10) {
-            zeroPlaceholder = '';
-        }
-        if (second === 0) {
-            zeroPlaceholder = 0;
-        }
-        document.getElementById("timer").innerText = min+':'+zeroPlaceholder+second;
-    }, 2000);
-}
+function startTimer () {
+    tens++; 
+    
+    if(tens < 9){
+      appendTens.innerHTML = "0" + tens;
+    }
+    
+    if (tens > 9){
+      appendTens.innerHTML = tens;
+      
+    } 
+    
+    if (tens > 99) {
+      console.log("seconds");
+      seconds++;
+      appendSeconds.innerHTML = "0" + seconds;
+      tens = 0;
+      appendTens.innerHTML = "0" + 0;
+    }
+    
+    if (seconds > 9){
+      appendSeconds.innerHTML = seconds;
+    }
+  
+  }
+  
 
 function playerRating(moves) {
     if (moves > 9 && moves < 19) {
@@ -73,9 +82,11 @@ function playerRating(moves) {
     return moves;
 }
 
+
+
 //End of game stats on modal
 function gameOver(moves,score) {
-    $('#winnerText').text(`Moves : ${moves} - Time: ${second}`);
+    $('#winnerText').text(`Moves : ${moves} - Time: ${seconds}.${tens} seconds`);
     $("#myModal").modal();
 }
 
@@ -83,6 +94,11 @@ function gameOver(moves,score) {
     $('.restart').bind('click', function(confirmed) {
         if (confirmed) {
             $('.stars').removeClass('fa fa-star-o').addClass('fa fa-star');
+            clearInterval(Interval);
+            tens = "00";
+            seconds = "00";
+            appendTens.innerHTML = tens;
+            appendSeconds.innerHTML = seconds;
             startGame();
         }
     });
@@ -91,7 +107,8 @@ function gameOver(moves,score) {
 var cardMatcher = function() {
     //check card to see if flipped
     $('.card').on('click', function() {
-        countTimer();
+        clearInterval(Interval);
+        Interval = setInterval(startTimer, 10);
         if ($(this).hasClass('show') || $(this).hasClass('match')) {
             return true;}
         //push HTML of each card into an array
@@ -127,6 +144,7 @@ var cardMatcher = function() {
         }
 
         if (match === 8) {
+            clearInterval(Interval);
             playerRating(moves);
             let score = playerRating(moves).score;
             setTimeout(function() {
@@ -135,5 +153,7 @@ var cardMatcher = function() {
         }
     });
 };
-
+$(document).ready(function() {  
 startGame();
+
+});
