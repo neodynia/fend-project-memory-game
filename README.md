@@ -11,6 +11,16 @@
 
 ## About
 
+### Author 
+
+Ryan Boris [email](rbwebdev@icloud.com)
+Student at Udacity
+Program: Front End Web Development Nanodegree
+
+### Project
+
+Project for Unit 2 - Required for successful completion of the Front End Nanodegree at Udacity.
+
 ## Instructions
 
 You may check out the browser-based rendition of this project at [githubpage](https://neodynia.github.io/fend-project-memory-game)
