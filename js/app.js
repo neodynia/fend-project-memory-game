@@ -5,11 +5,11 @@ let fullDeck = ["diamond", "bolt", "cube", "paper-plane-o", "anchor", "leaf", "b
 let allOpenCards = [];
 let match;
 let moves;
+let Interval;
 let seconds = 0;
 let tens = 0;
 let appendTens = document.getElementById("tens");
 let appendSeconds = document.getElementById("seconds");
-let Interval;
 
 /*Shuffle function from http://stackoverflow.com/a/2450976*/
 function shuffle(array) {
@@ -84,7 +84,7 @@ function playerRating(moves) {
 }
 
 /*End of Game Function*/
-function gameOver(moves, score) {
+function gameOver(moves) {
     // Displays game stats on end modal
     $('#winnerText').text(`Moves : ${moves} - Time: ${seconds}.${tens} seconds`);
     // Determines star stats on end modal
@@ -137,16 +137,17 @@ var cardMatcher = function () {
         if (allOpenCards.length >= 2) {
             $('.card').off('click');
         }
-        //match cards 
+        // Match cards 
         if (allOpenCards.length > 1) {
-            //match cards with animated bounce
+            // Match cards with animated bounce
             if (allOpenCards[1] === allOpenCards[0]) {
                 $('.deck').find('.open').addClass('match animated bounce').removeClass('shake open');
                 match++;
+                // Clear array after match
                 allOpenCards.length = 0;
+                // Start matching function over 
                 cardMatcher();
-
-                //Delay cards if not matched then cover up with animated shake
+            // Delay cards if not matched then cover up with animated shake
             } else {
                 $('.deck').find('.open').addClass('animated shake');
                 setTimeout(function () {
@@ -154,25 +155,26 @@ var cardMatcher = function () {
                     allOpenCards.length = 0;
                     cardMatcher();
                 }, 1200);
-
             }
-
+            // Increment move counter
             moves++;
+            // Run total moves through function that generates end of game player stats
             playerRating(moves);
             $('.moves').html(moves);
         }
-
+        // When all 8 matches are made
         if (match === 8) {
+            // Stop timer 
             clearInterval(Interval);
+            // Call function to generate ratings for end of game modal 
             playerRating(moves);
-            let score = playerRating(moves).score;
-            setTimeout(function () {
-                gameOver(moves, score);
-            }, 500);
+            // Call function that ends the game and resets after modal
+            gameOver(moves);
         }
     });
 };
+
+/* Functions to be called on DOM Loading*/
 $(document).ready(function () {
     startGame();
-
 });
