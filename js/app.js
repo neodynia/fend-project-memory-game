@@ -72,6 +72,7 @@ function startTimer() {
 
 /*Star to Moves Made Relationship*/
 function playerRating(moves) {
+    // Establishes moves needed to earn stars and displays those results by removing star classes
     if (moves > 9 && moves < 19) {
         $('#star-three').removeClass('fa fa-star');
     } else if (moves > 19 && moves < 29) {
@@ -82,11 +83,11 @@ function playerRating(moves) {
     return moves;
 }
 
-
-
-//End of game stats on modal
+/*End of Game Function*/
 function gameOver(moves, score) {
+    // Displays game stats on end modal
     $('#winnerText').text(`Moves : ${moves} - Time: ${seconds}.${tens} seconds`);
+    // Determines star stats on end modal
     if (moves > 9 && moves < 19) {
         $('span.starCount').text('THREE STARS!');
     } else if (moves > 19 && moves < 29) {
@@ -94,38 +95,45 @@ function gameOver(moves, score) {
     } else if (moves > 29) {
         $('span.starCount').text('ONE STAR!');
     }
-
+    // Generates end modal upon game end
     $("#myModal").modal();
-
-
-    //restart game
+    // Restarts the game at the end of the modal with user permission and also with reset game icon during gammeplay
     $('.restart').bind('click', function (confirmed) {
         if (confirmed) {
+            // Place three stars back
             $('.stars').removeClass('fa fa-star-o').addClass('fa fa-star');
+            // Stop timer
             clearInterval(Interval);
+            // Display timer 
             tens = "00";
             seconds = "00";
             appendTens.innerHTML = tens;
             appendSeconds.innerHTML = seconds;
+            // Start the game again
             startGame();
         }
     });
 }
-//match like cards and indicate matches and nonmatches
+
+/* Match like cards and indicate matches and nonmatches */
 var cardMatcher = function () {
-    //check card to see if flipped
+    // Listener on card click
     $('.card').on('click', function () {
+        // Reset timer 
         clearInterval(Interval);
+        // Start timer
         Interval = setInterval(startTimer, 10);
+        // Determine if card is face up 
         if ($(this).hasClass('show') || $(this).hasClass('match')) {
             return true;
         }
-        //push HTML of each card into an array
+        // Push HTML of each card into an array
         let box = $(this).html();
+        // Turn card face up and remove existing classes from previous turns
         $(this).addClass('open show').removeClass('animated shake bounce');
+        // Push both cards into an array to compare 
         allOpenCards.push(box);
-
-        //turn off clicks when two cards are open 
+        // Turn off clicks when two cards are open 
         if (allOpenCards.length >= 2) {
             $('.card').off('click');
         }
