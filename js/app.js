@@ -96,7 +96,7 @@ function gameOver(moves,score) {
     }
 
     $("#myModal").modal();
-}
+
 
 //restart game
     $('.restart').bind('click', function(confirmed) {
@@ -110,7 +110,7 @@ function gameOver(moves,score) {
             startGame();
         }
     });
-
+}
 //match like cards and indicate matches and nonmatches
 var cardMatcher = function() {
     //check card to see if flipped
