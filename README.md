@@ -13,9 +13,9 @@
 
 ### Author
 
-Ryan Boris [email](rbwebdev@icloud.com)
-Student at Udacity
-Program: Front End Web Development Nanodegree
+* Ryan Boris [rbwebdev@icloud.com](rbwebdev@icloud.com)
+* Student at Udacity
+* Program: Front End Web Development Nanodegree
 
 ### Project
 
