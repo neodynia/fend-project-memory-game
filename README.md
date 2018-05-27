@@ -11,7 +11,7 @@
 
 ## About
 
-### Author 
+### Author
 
 Ryan Boris [email](rbwebdev@icloud.com)
 Student at Udacity
@@ -39,7 +39,7 @@ You are welcome to "fork" this repository and run the game on your own server or
 ## Dependencies
 
 * [jQuery](https://jquery.com)
-* [Bootstrap4](https://getbootstrap.com) - CSS and JS 
+* [Bootstrap4](https://getbootstrap.com) - CSS and JS
 * [popper.js](https://popper.js.org)
 * [Animate.css](https://daneden.github.io/animate.css/)
 * [Google Fonts](https://fonts.google.com/) - Import Font Name: Righteous, Cursive && Coda, Cursive
