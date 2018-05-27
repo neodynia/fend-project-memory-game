@@ -2,8 +2,14 @@
 
 ## Table of Contents
 
+* [About](#about)
 * [Instructions](#instructions)
+* [Dependencies](#dependencies)
 * [Contributing](#contributing)
+* [License](#license)
+* [Questions](#questions)
+
+## About
 
 ## Instructions
 
@@ -18,9 +24,21 @@ The game play is quite simple. Two cards are revealed at a time. If both cards c
 \*Executing the Game
 You are welcome to "fork" this repository and run the game on your own server or local environment. You also can play the game, already on the web, at [githubpage](https://neodynia.github.io/fend-project-memory-game)
 
+## Dependencies
+
+* jQuery
+* Bootstrap4 - CSS and JS 
+* popper.js
+* Animate.css
+* Google Fonts - Import Font Name: Righteous, Cursive && Coda, Cursive
+
 ## Contributing
 
 Although this may seem like a simple project at first, there are many considerations and modifications that one can easily get lost in, especially when you consider the fine and subtle nuances. I encourage constructive advice and refactoring. In order to provide that, I would ask you to fork this repository and sumbmit any modifications you would like bring to my attention on a branch with a name that is indicative of the general theme or type of modification you wish to make. Then, submit a pull request and I will gladly review!
+
+## License
+
+Project is originally forked from and created by Udacity and provided as part of their Front End Nanodegree program.
 
 ## Questions
 
