@@ -1,3 +1,4 @@
+/* General Document Stylings */
 html {
     box-sizing: border-box;
 }
@@ -21,6 +22,8 @@ body {
     font-family: 'Coda', cursive;
 }
 
+/* Containers and Major Page Semantic Stylings*/
+
 .container {
     display: flex;
     justify-content: center;
@@ -33,9 +36,7 @@ h1 {
     font-weight: 300;
 }
 
-/*
- * Styles for the deck of cards
- */
+/* Styles for the deck of cards */
 
 .deck {
     width: 660px;
@@ -81,9 +82,7 @@ h1 {
     font-size: 33px;
 }
 
-/*
- * Styles for the Score Panel
- */
+/* Styles for the Score Panel */
 
 .score-panel {
     text-align: left;
@@ -108,10 +107,7 @@ h1 {
     cursor: pointer;
 }
 
-#modalEnd {
-    visibility: hidden;
-    
-}
+/* Media Queries */
 
 @media only screen and (max-width: 780px) {
     .deck {
