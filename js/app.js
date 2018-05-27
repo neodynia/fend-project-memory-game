@@ -97,11 +97,26 @@ function gameOver(moves) {
     }
     // Generates end modal upon game end
     $("#myModal").modal();
-    // Restarts the game at the end of the modal with user permission and also with reset game icon during gammeplay
+    // Start the game again
+    if (confirmReset) {
+        confirmReset();
+    }
+}
+
+/* Restarts the game at the end of the modal with user permission and also with reset game icon during gammeplay */
+let confirmReset = function() {
     $('.restart').bind('click', function (confirmed) {
         if (confirmed) {
             // Place three stars back
-            $('.stars').removeClass('fa fa-star-o').addClass('fa fa-star');
+            if (!$('#star-one').hasClass('fa-fa star')) {
+                $('#star-one').addClass('fa fa-star');
+            }
+            if (!$('#star-two').hasClass('fa-fa star')) {
+                $('#star-two').addClass('fa fa-star');
+            }
+            if (!$('#star-three').hasClass('fa-fa star')) {
+                $('#star-three').addClass('fa fa-star');
+            }
             // Stop timer
             clearInterval(Interval);
             // Display timer 
@@ -109,11 +124,10 @@ function gameOver(moves) {
             seconds = "00";
             appendTens.innerHTML = tens;
             appendSeconds.innerHTML = seconds;
-            // Start the game again
             startGame();
         }
     });
-}
+};
 
 /* Match like cards and indicate matches and nonmatches */
 var cardMatcher = function () {
@@ -177,4 +191,5 @@ var cardMatcher = function () {
 /* Functions to be called on DOM Loading*/
 $(document).ready(function () {
     startGame();
+    confirmReset();
 });
